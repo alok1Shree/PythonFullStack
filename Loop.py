@@ -36,3 +36,34 @@ print("Reverse of the number is:", reverse)"""
 
 
 #Check Palindrome Number - Madam
+"""n = int(input("Enter any number: "))
+original = n
+reverse = 0
+
+while n > 0:
+    digit = n % 10
+    reverse = reverse * 10 + digit
+    n = n // 10
+
+if original == reverse:
+    print(original, "is a palindrome number")
+else:
+    print(original, "is not a palindrome number")"""
+
+
+
+"""
+*
+* *
+* * *
+* * * *
+* * * * *
+"""
+
+rows = 5
+for i in range(1,rows+1): #(1,2,3,4,5,6) i(rows)=1, 2, 3
+    for j in range(i): #j(Column)=0 1 2 3
+        print("*", end=" ") #* \n * * \n * * * \n
+    print()
+
+
