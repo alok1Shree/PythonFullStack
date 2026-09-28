@@ -1,0 +1,43 @@
+# =====================================================================
+# REAL-WORLD MIX: AIRPORT BOARDING & SECURITY SYSTEM
+# =====================================================================
+
+# 1. TUPLES: Immutable Passenger Records
+# The details on a ticket cannot be changed mid-flight.
+ticket_1 = ("Alice Smith", "12A", "AA-240")
+ticket_2 = ("Bob Jones", "14C", "AA-240")
+ticket_3 = ("Charlie Brown", "02B", "AA-240")
+ticket_4 = ("Alice Smith", "12A", "AA-240")  # Duplicate scan error simulation
+
+print("🎟️ Generated immutable ticket records (Tuples).")
+
+
+# 2. LIST: The Ordered Boarding Line
+# Order matters. Passengers line up in the exact order they arrive at the gate.
+boarding_line = []
+
+# Passengers join the line one by one
+boarding_line.append(ticket_1)
+boarding_line.append(ticket_2)
+boarding_line.append(ticket_3)
+boarding_line.append(ticket_4)  # Alice accidentally scans her ticket a second time
+
+print(f"\n🚶 Current Boarding Line Order (List):")
+for index, passenger in enumerate(boarding_line, 1):
+    print(f"   Position {index}: {passenger[0]} (Seat {passenger[1]})")
+
+
+# 3. SET: Security Checkpoint Log (Unique Verification)
+# Security needs to verify how many UNIQUE passengers actually boarded.
+# Converting the list to a set automatically filters out the duplicate scan.
+verified_manifest = set(boarding_line)
+
+print(f"\n🛡️ Security Audit Complete (Set):")
+print(f"   Total scans in line (List length): {len(boarding_line)}")
+print(f"   Actual unique passengers boarded (Set length): {len(verified_manifest)}")
+
+print(f"\n📋 Final Verified Flight Manifest:")
+for passenger in verified_manifest:
+    # Unpacking the tuple elements for a clean printout
+    name, seat, flight = passenger
+    print(f"   ✈️ Confirmed: {name} | Seat: {seat} | Flight: {flight}")
