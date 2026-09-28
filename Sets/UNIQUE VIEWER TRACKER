@@ -1,0 +1,36 @@
+# ==========================================
+# REAL-WORLD EXAMPLE: UNIQUE VIEWER TRACKER
+# ==========================================
+
+# 1. Automatic Duplicate Elimination
+# Imagine a server log recording user activity. Users click refresh or reconnect.
+server_log_day1 = ["user_99", "user_14", "user_99", "user_45", "user_14", "user_202"]
+
+# Converting the log list into a Set automatically removes all duplicates
+unique_viewers_day1 = set(server_log_day1)
+
+print(f"📋 Raw Server Log (List): {server_log_day1}")
+print(f"✨ Unique Viewers Day 1 (Set): {unique_viewers_day1}")
+print(f"📈 Total Unique Viewers: {len(unique_viewers_day1)}")
+
+
+# --- THE "WHY SETS?" MOMENT (Adding Data & Speed) ---
+# Adding an existing user does absolutely nothing. No duplicates allowed!
+unique_viewers_day1.add("user_45")  # Already in the set
+unique_viewers_day1.add("user_777") # New user
+
+print(f"\n🔄 After trying to add 'user_45' again and new 'user_777':")
+print(unique_viewers_day1)
+
+
+# 2. Powerful Set Math (Intersection and Difference)
+# Now we track Day 2 viewers
+unique_viewers_day2 = {"user_14", "user_202", "user_888", "user_999"}
+
+# A. INTERSECTION: Who watched BOTH days?
+loyal_viewers = unique_viewers_day1.intersection(unique_viewers_day2)
+print(f"\n🔥 Loyal Audience (Watched Day 1 AND Day 2): {loyal_viewers}")
+
+# B. DIFFERENCE: Who is completely new on Day 2?
+new_viewers_day2 = unique_viewers_day2.difference(unique_viewers_day1)
+print(f"🆕 Growth Metrics (Watched Day 2 BUT NOT Day 1): {new_viewers_day2}")
