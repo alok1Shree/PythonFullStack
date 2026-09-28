@@ -1,0 +1,32 @@
+# 1. Defining Fixed Coordinates (Tuples)
+# You can't change just the Latitude without breaking the location!
+pickup_location = (40.7128, -74.0060)   # Times Square, NYC (Lat, Long)
+dropoff_location = (40.7484, -73.9857)  # Empire State Building (Lat, Long)
+
+print(f"🚀 Ride started! Picking up passenger at GPS: {pickup_location}")
+
+# --- THE "WHY TUPLES?" MOMENT (Live Demonstration) ---
+try:
+    pickup_location[0] = 34.0522  # Trying to change Latitude to Los Angeles
+except TypeError as error:
+    print(f"\n❌ ERROR CAUGHT: {error}")
+    print("💡 LESSON: Python blocked this! Tuples are IMMUTABLE. This prevents software bugs from changing vital data.")
+
+
+# 2. Tuple Unpacking (Clean Code)
+lat, long = dropoff_location
+print(f"\n📍 Approaching destination...")
+print(f"   Latitude: {lat}")
+print(f"   Longitude: {long}")
+
+
+# 3. Combining Lists and Tuples (The Big Picture)
+# A driver's trip history changes (List), but each stop is a fixed point (Tuple).
+driver_trip_history = []
+
+# Add completed trips to the history
+driver_trip_history.append(pickup_location)
+driver_trip_history.append(dropoff_location)
+
+print(f"\n📊 Driver's Saved Route History (List of Tuples):")
+print(driver_trip_history)
